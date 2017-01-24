@@ -18,15 +18,15 @@ namespace assignment1
         //****************************************
         //Variables
         //****************************************
-
+        string csvFile = "../../../datafiles/WineList.csv";
+        StreamReader streamReader = null;
 
         //***************************************
         //Methods
         //***************************************
         private void ReadFile()
         {
-            string path = 
-            StreamReader input = new StreamReader(path);
+            streamReader = new StreamReader(csvFile);
         }
 
 
