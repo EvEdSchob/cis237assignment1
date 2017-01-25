@@ -54,7 +54,7 @@ namespace assignment1
         }
 
 
-        private void readLine(string line, WineItem[] wineCollection, int index)
+        public void readLine(string line, WineItem[] wineCollection, int index)
         {
             //Split array to hold parts of the record just read in
             string[] split = line.Split(',');

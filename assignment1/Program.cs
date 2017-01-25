@@ -56,26 +56,53 @@ namespace assignment1
                         }
                         break;
                     case 2:
-                        //Output the full list of available wines.
-                        ui.Output(WineItemCollection.GetPrintString(wineCollection)); 
-                        choice = ui.UserInput();
+                        if (!CSVLoaded)
+                        {
+                            //Output an error and return to the UI
+                            ui.LoadCSV();
+                            choice = ui.UserInput();
+                        }
+                        else
+                        {
+                            //Output the full list of available wines.
+                            ui.Output(WineItemCollection.GetPrintString(wineCollection)); 
+                            choice = ui.UserInput();
+                        }
                         break;
                     case 3:
-                        //Search Array
-                        //WineItemCollection.Search(wineCollection);
-                        ui.Output("Search Function Pending");
-                        choice = ui.UserInput();
+                        if (!CSVLoaded)
+                        {
+                            //Output an error and return to the UI
+                            ui.LoadCSV();
+                            choice = ui.UserInput();
+                        }
+                        else
+                        {
+                            //Search Array
+                            ui.Output(WineItemCollection.Search(ui.SearchInput(), wineCollection));
+                            choice = ui.UserInput();
+                        }
                         break;
                     case 4:
-                        //Add item
-                        ui.Output("Add Function Pending");
-                        choice = ui.UserInput();
+                        if (!CSVLoaded)
+                        {
+                            //Output an error and return to the UI
+                            ui.LoadCSV();
+                            choice = ui.UserInput();
+                        }
+                        else
+                        {
+                            //Add item
+                            //WineItemCollection.Add(wineCollection);
+                            ui.Output("Add Function Pending");
+                            choice = ui.UserInput();
+                        }
                         break;
                     default:
                         //Output the error if there is a numerical input that is not 1-5
                         ui.Output("Error: Please enter valid numeric entry (1-5)");
                         choice = ui.UserInput();
-                        return;
+                        break;
 
                 }
             }

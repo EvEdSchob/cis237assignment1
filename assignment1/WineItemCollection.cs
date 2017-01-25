@@ -2,7 +2,7 @@
 //CIS 237
 //1/21/17
 //
-//
+//Manages the Array wineCollection Add, Search and Print String
 
 using System;
 using System.Collections.Generic;
@@ -14,22 +14,26 @@ namespace assignment1
 {
     static class WineItemCollection
     {
-        public static void Add(WineItem[] wineCollection)
+        public static void Add(string AddValue, WineItem[] wineCollection)
         {
-            
+            //int x = 0;
+            //while(wineCollection[x] != null)
+            //{
+            //    x++;
+            //}
+            //CSVProcessor addItem = new CSVProcessor.readLine();
         }
 
-        public static string Search(WineItem[] wineCollection)
+        public static string Search(string SearchInput, WineItem[] WineCollection)
         {
-            foreach (WineItem wineItem in wineCollection)
+            foreach (WineItem wineItem in WineCollection)
             {
-                //if (input == wineItem.ItemId.ToString())
-                //{
-                //    return wineItem.ItemId.ToString();
-                //}
+                if (wineItem == null)
+                    return "Item not found";
+                if(SearchInput == wineItem.ItemId)
+                    return wineItem.ToString();
             }
-
-            return ("Item not Found");
+            return null;
         }
 
         public static string GetPrintString(WineItem[] WineCollection)

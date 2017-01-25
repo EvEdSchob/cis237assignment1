@@ -42,6 +42,20 @@ namespace assignment1
 
         public string SearchInput()
         {
+            string query = null;
+            Console.Write(Environment.NewLine + "Enter Item ID:");
+            query = Console.ReadLine().ToString();
+            while(query.Length != 5)
+            {
+                Console.WriteLine("Invalid query length. Item IDs are 5 characters.");
+                query = SearchInput();
+            }
+            return query.ToUpper();
+        }
+
+        public string AddItem()
+        {
+            
             return null;
         }
 
@@ -49,6 +63,12 @@ namespace assignment1
         {
             Console.WriteLine(outputString);
         }
+
+        public void LoadCSV()
+        {
+            Console.WriteLine("Array not found. Please load a CSV file.");
+        }
+
 
         private void displayMenu()
         {
