@@ -15,27 +15,57 @@ namespace assignment1
 {
     class CSVProcessor
     {
-        //****************************************
-        //Variables
-        //****************************************
-        string csvFile = "../../../datafiles/WineList.csv";
-        StreamReader streamReader = null;
-
-        //***************************************
-        //Methods
-        //***************************************
-        private void ReadFile()
+        public bool ImportCSV(string pathToCSVFile, WineItem[] wineCollection)
         {
-            streamReader = new StreamReader(csvFile);
+            StreamReader streamReader = null;
+
+            try
+            {
+                string line;
+
+                streamReader = new StreamReader(pathToCSVFile);
+
+                int counter = 0;
+
+
+                //While records are able to be read
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    //Read a record
+                    readLine(line, wineCollection, counter++);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine();
+                Console.WriteLine(e.StackTrace);
+
+                return false;
+            }
+            finally
+            {
+                if(streamReader != null)
+                {
+                    streamReader.Close();
+                }
+            }
         }
 
 
-        //***************************************
-        //Constructors
-        //***************************************
-        public CSVProcessor()
+        private void readLine(string line, WineItem[] wineCollection, int index)
         {
-            ReadFile();
-        }        
+            //Split array to hold parts of the record just read in
+            string[] split = line.Split(',');
+
+            //Temp storage variables
+            string itemId = split[0];
+            string description = split[1];
+            string pack = split[2];
+
+            //Pass split parts into the array
+            wineCollection[index] = new WineItem(itemId, description, pack);
+        }    
     }
 }

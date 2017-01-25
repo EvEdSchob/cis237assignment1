@@ -12,23 +12,41 @@ using System.Threading.Tasks;
 
 namespace assignment1
 {
-    class WineItemCollection
+    static class WineItemCollection
     {
-        
-
-        public void Add()
+        public static void Add(WineItem[] wineCollection)
         {
-
+            
         }
 
-        public void Search()
+        public static string Search(WineItem[] wineCollection)
         {
+            foreach (WineItem wineItem in wineCollection)
+            {
+                //if (input == wineItem.ItemId.ToString())
+                //{
+                //    return wineItem.ItemId.ToString();
+                //}
+            }
 
+            return ("Item not Found");
         }
 
-        public void GetPrintString()
+        public static string GetPrintString(WineItem[] WineCollection)
         {
+            string outputString = "";
 
+            foreach (WineItem wineItem in WineCollection)
+            {
+                if (wineItem != null)
+                {
+                    //Concantonate to outputString
+                    outputString += wineItem.ToString() +
+                        Environment.NewLine;
+                }
+
+            }
+            return outputString;
         }
     }
 }

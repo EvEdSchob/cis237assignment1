@@ -31,10 +31,18 @@ namespace assignment1
             {
                 return Int32.Parse(input);
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.ToString());
+                Console.WriteLine();
+                Console.WriteLine(e.StackTrace);
                 return 0;
             }
+        }
+
+        public string SearchInput()
+        {
+            return null;
         }
 
         public void Output(string outputString)
@@ -49,12 +57,8 @@ namespace assignment1
             Console.WriteLine("2. Print wine list");
             Console.WriteLine("3. Search for an item");
             Console.WriteLine("4. Add a new wine");
-            Console.WriteLine("5. Exit");
-        }
-
-        private void displayFarewell()
-        {
-            Console.WriteLine("Goodbye!");
+            Console.WriteLine("5. Exit" + Environment.NewLine);
+            Console.Write("Make a selection: ");
         }
     }
 }

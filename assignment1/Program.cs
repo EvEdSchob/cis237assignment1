@@ -19,55 +19,68 @@ namespace assignment1
             //Create an instance of the UI
             UserInterface ui = new UserInterface();
 
+            //Create the wine collection
+            WineItem[] wineCollection = new WineItem[5000];
+
+            //Output Program Header
             ui.Output("************************************************************" + Environment.NewLine +
             "******                  Wine HQ                       ******" + Environment.NewLine +
             "*******        Wine Collection Management            *******" + Environment.NewLine +
-            "************************************************************" + Environment.NewLine + Environment.NewLine);
+            "************************************************************" + Environment.NewLine);
+
+            string csvFile = "../../../datafiles/WineList.csv"; //Path to CSV File
 
             //Prompt for UserInput
             int choice = ui.UserInput();
-            int CSVcounter = 0;
+            bool CSVLoaded = false;
 
             while (choice != 5)
             {
                 switch (choice)
                 {
                     case 1:
-                        if (CSVcounter > 0)
+                        //If the CSV has already been loaded
+                        if (CSVLoaded)
                         {
-                            ui.Output("This action only needs to be performed once.");
-                            ui.UserInput();
+                           //Output an error and return to the UI
+                           ui.Output("This action only needs to be performed once.");
+                           choice = ui.UserInput();
                         }
-                        CSVProcessor readFile = new CSVProcessor();
+                        else
+                        { 
+                           //Otherwise load in the CSV file
+                           CSVProcessor readFile = new CSVProcessor();
+                           //Set CSVLoaded if read operation was successful
+                           CSVLoaded = readFile.ImportCSV(csvFile, wineCollection);
+                           choice = ui.UserInput();
+                        }
                         break;
                     case 2:
-                        string outputString = "";
-
-                        foreach (WineItem wineItem in wineList)
-                        {
-                            if (wineItem != null)
-                            {
-                                //Concantonate to outputString
-                                outputString += wineItem.ToString() +
-                                    Environment.NewLine;
-                            }
-
-                        }
-                        ui.Output(outputString);
+                        //Output the full list of available wines.
+                        ui.Output(WineItemCollection.GetPrintString(wineCollection)); 
+                        choice = ui.UserInput();
                         break;
                     case 3:
                         //Search Array
+                        //WineItemCollection.Search(wineCollection);
+                        ui.Output("Search Function Pending");
+                        choice = ui.UserInput();
                         break;
                     case 4:
                         //Add item
+                        ui.Output("Add Function Pending");
+                        choice = ui.UserInput();
                         break;
                     default:
+                        //Output the error if there is a numerical input that is not 1-5
                         ui.Output("Error: Please enter valid numeric entry (1-5)");
-                        ui.UserInput();
+                        choice = ui.UserInput();
                         return;
 
                 }
             }
+            //If UI input = 5 display farewell and close the program
+            ui.Output("Goodbye!");
         }
     }
 }
