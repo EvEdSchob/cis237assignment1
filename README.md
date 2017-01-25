@@ -4,7 +4,7 @@
 
 ## Author
 
-
+Evan Schober
 
 ## Description
 
@@ -85,4 +85,8 @@ Suggestion/Hints:
 
 ## Outside Resources Used
 
+
+
 ## Known Problems, Issues, And/Or Errors in the Program
+
+Does not save items added to the array to the CSV file.
