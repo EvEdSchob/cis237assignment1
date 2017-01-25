@@ -53,10 +53,35 @@ namespace assignment1
             return query.ToUpper();
         }
 
-        public string AddItem()
+        public WineItem AddItem()
         {
-            
-            return null;
+            string id = "";
+            string description = null;
+            string pack = null;
+            bool correct = true;
+            WineItem NewItem = new WineItem();
+            Console.WriteLine("Adding a new item. Please enter a value.");
+            while(correct)
+            {
+                while (id.Length != 5)
+                {
+                    Console.WriteLine("Item ID(Must be 5 Alphanumeric Characters)");
+                    id = Console.ReadLine().ToString();
+                }
+                Console.WriteLine("Enter Product Description");
+                description = Console.ReadLine();
+                Console.WriteLine("Enter pack information");
+                pack = Console.ReadLine();
+                //Verify user input
+                NewItem = new WineItem(id, description, pack);
+                Console.WriteLine(NewItem.ToString());
+                Console.WriteLine("Is this correct?");
+                if (Console.ReadKey().ToString().ToUpper() != "Y")
+                    correct = false;
+                Console.WriteLine(Environment.NewLine);
+                    
+            }
+            return NewItem;
         }
 
         public void Output(string outputString)

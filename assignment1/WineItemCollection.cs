@@ -14,14 +14,14 @@ namespace assignment1
 {
     static class WineItemCollection
     {
-        public static void Add(string AddValue, WineItem[] wineCollection)
+        public static void Add(WineItem NewItem, WineItem[] wineCollection)
         {
-            //int x = 0;
-            //while(wineCollection[x] != null)
-            //{
-            //    x++;
-            //}
-            //CSVProcessor addItem = new CSVProcessor.readLine();
+            int x = 0;
+            while (wineCollection[x] != null)
+            {
+                x++;
+            }
+            wineCollection[x] = NewItem;
         }
 
         public static string Search(string SearchInput, WineItem[] WineCollection)

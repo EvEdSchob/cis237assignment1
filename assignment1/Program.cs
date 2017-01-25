@@ -79,7 +79,7 @@ namespace assignment1
                         else
                         {
                             //Search Array
-                            ui.Output(WineItemCollection.Search(ui.SearchInput(), wineCollection));
+                            ui.Output(WineItemCollection.Search(ui.SearchInput(), wineCollection) + Environment.NewLine);
                             choice = ui.UserInput();
                         }
                         break;
@@ -93,8 +93,7 @@ namespace assignment1
                         else
                         {
                             //Add item
-                            //WineItemCollection.Add(wineCollection);
-                            ui.Output("Add Function Pending");
+                            WineItemCollection.Add(ui.AddItem(), wineCollection);
                             choice = ui.UserInput();
                         }
                         break;
